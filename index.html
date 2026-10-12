@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation - Smart Email Marketing Tools</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a1a; color: #fff; }
+        nav { background: #12122a; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; }
+        nav .logo { font-size: 24px; font-weight: bold; color: #00d4ff; }
+        nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
+        nav ul li a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        nav ul li a:hover { color: #00d4ff; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 22px; }
+        .cart-count { position: absolute; top: -10px; right: -12px; background: #7b2ff7; color: #fff; font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .hero { text-align: center; padding: 120px 20px; background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%); }
+        .hero h1 { font-size: 56px; margin-bottom: 20px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: #aaa; max-width: 750px; margin: 0 auto 40px; line-height: 1.6; }
+        .btn { display: inline-block; padding: 18px 50px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; transition: 0.3s; border: none; cursor: pointer; }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 212, 255, 0.6); }
+        .features { padding: 80px 50px; }
+        .features h2 { text-align: center; font-size: 40px; margin-bottom: 60px; color: #00d4ff; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .card { background: #12122a; padding: 40px; border-radius: 15px; border: 1px solid #222; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border-color: #00d4ff; box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2); }
+        .card h3 { color: #00d4ff; margin-bottom: 15px; font-size: 22px; }
+        .card p { color: #aaa; line-height: 1.6; }
+        .reviews { padding: 80px 20px; background: #0d0d20; overflow: hidden; }
+        .reviews h2 { text-align: center; font-size: 40px; margin-bottom: 60px; color: #00d4ff; }
+        .slider { display: flex; gap: 30px; animation: slide 40s linear infinite; width: max-content; }
+        .slider:hover { animation-play-state: paused; }
+        @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .review-card { background: #12122a; padding: 35px; border-radius: 15px; border: 1px solid #222; width: 380px; flex-shrink: 0; }
+        .review-card .stars { color: #ffd700; margin-bottom: 15px; font-size: 18px; }
+        .review-card p { color: #ccc; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+        .review-card .author { color: #00d4ff; font-weight: bold; }
+        .review-card .role { color: #666; font-size: 14px; }
+        .cta { text-align: center; padding: 100px 20px; background: linear-gradient(135deg, #1a1a3a 0%, #0a0a1a 100%); }
+        .cta h2 { font-size: 40px; margin-bottom: 20px; }
+        .cta p { color: #aaa; margin-bottom: 40px; font-size: 18px; }
+        footer { text-align: center; padding: 40px; background: #12122a; color: #666; }
+        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
+        .cart-modal.active { display: flex; }
+        .cart-content { background: #12122a; padding: 40px; border-radius: 15px; max-width: 500px; width: 90%; border: 1px solid #00d4ff; }
+        .cart-content h3 { color: #00d4ff; margin-bottom: 20px; }
+        .cart-content .item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; }
+        .cart-content .item-name { color: #ccc; }
+        .cart-content .item-price { color: #00d4ff; font-weight: bold; }
+        .cart-content .total { display: flex; justify-content: space-between; padding: 20px 0; font-size: 20px; font-weight: bold; color: #fff; }
+        .cart-content .actions { display: flex; gap: 15px; margin-top: 20px; }
+        .cart-content .actions button { flex: 1; padding: 15px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        .btn-continue { background: #222; color: #fff; }
+        .btn-continue:hover { background: #333; }
+        .btn-checkout { background: linear-gradient(90deg, #00d4ff, #7b2ff7); color: #fff; }
+        .btn-checkout:hover { transform: scale(1.03); }
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; }
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 16px; }
+            .features { padding: 50px 20px; }
+            .features h2 { font-size: 28px; }
+            .reviews h2 { font-size: 28px; }
+            .review-card { width: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AI Automation</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="cart-icon" onclick="openCart()">🛒<span class="cart-count" id="cartCount">0</span></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Shop AI Tools That Print Money</h1>
+        <p>While your competitors send boring manual emails that get ignored, our AI tools write, personalize, and send emails that actually convert — on autopilot, 24/7.</p>
+        <a href="tools.html" class="btn">Shop AI Tools →</a>
+    </section>
+
+    <section class="features">
+        <h2>Why AI Automation Wins</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>⚡ 10x Faster</h3>
+                <p>What takes your team 40 hours, our AI does in 4 minutes. Send 10,000 personalized emails while you sleep.</p>
+            </div>
+            <div class="card">
+                <h3>🎯 Hyper-Personal</h3>
+                <p>AI reads each customer's behavior, past purchases, and browsing history to write emails that feel handcrafted just for them.</p>
+            </div>
+            <div class="card">
+                <h3>📈 Higher Conversions</h3>
+                <p>Our clients see an average 340% increase in open rates and 180% increase in click-through rates within 30 days.</p>
+            </div>
+            <div class="card">
+                <h3>🔄 Always Learning</h3>
+                <p>The AI learns from every campaign, getting smarter and more effective with every email you send.</p>
+            </div>
+            <div class="card">
+                <h3>💰 Save $10K/Month</h3>
+                <p>Replace expensive email marketing agencies and freelancers with AI that works 24/7 without breaks.</p>
+            </div>
+            <div class="card">
+                <h3>🚀 Scale Instantly</h3>
+                <p>Whether you have 100 or 1,000,000 subscribers, our AI handles it all without slowing down.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2>What Our Clients Say</h2>
+        <div class="slider" id="slider">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"I was skeptical at first, but the AI Email Personalizer doubled my open rates in the first week. My store went from $8K/month to $23K/month in 60 days."</p>
+                <div class="author">Sarah Mitchell</div>
+                <div class="role">Shopify Store Owner, USA</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The Abandoned Cart AI recovered $14,000 in lost sales in the first month. It's like having a full-time sales team working for pennies."</p>
+                <div class="author">James Okafor</div>
+                <div class="role">E-commerce Manager, UK</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"I fired my email marketing agency and replaced them with these AI tools. Saved $4,500/month and my results are 3x better."</p>
+                <div class="author">Emily Chen</div>
+                <div class="role">DTC Brand Founder, Canada</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The AI Subject Line Generator is pure magic. My emails went from 12% open rate to 47% open rate. Unbelievable."</p>
+                <div class="author">David Adeyemi</div>
+                <div class="role">Shopify Store Owner, Nigeria</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"I run 3 Shopify stores. These AI tools are the only reason I can manage all of them without hiring more staff."</p>
+                <div class="author">Maria Rodriguez</div>
+                <div class="role">Multi-Store Owner, Spain</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The AI Segments my customers better than I ever could. My VIP customers get VIP emails and my revenue from repeat buyers is up 220%."</p>
+                <div class="author">Ahmed Hassan</div>
+                <div class="role">Store Owner, UAE</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Let AI Print Money for You?</h2>
+        <p>Join 2,847 store owners already using our AI tools.</p>
+        <a href="tools.html" class="btn">Shop AI Tools →</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AI Automation. All rights reserved.</p>
+    </footer>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <h3>Your Cart</h3>
+            <div id="cartItems"></div>
+            <div class="total"><span>Total:</span><span id="cartTotal">$0</span></div>
+            <div class="actions">
+                <button class="btn-continue" onclick="closeCart()">Continue Shopping</button>
+                <button class="btn-checkout" onclick="goToCheckout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function openCart() {
+            const modal = document.getElementById('cartModal');
+            const itemsDiv = document.getElementById('cartItems');
+            const totalSpan = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                itemsDiv.innerHTML = '<p style="color:#aaa;padding:20px 0;">Your cart is empty.</p>';
+                totalSpan.textContent = '$0';
+            } else {
+                let html = '';
+                let total = 0;
+                cart.forEach((item, index) => {
+                    html += `<div class="item"><span class="item-name">${item.name}</span><span class="item-price">$${item.price}</span></div>`;
+                    total += item.price;
+                });
+                itemsDiv.innerHTML = html;
+                totalSpan.textContent = '$' + total;
+            }
+            
+            modal.classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function goToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty. Add some tools first!');
+                return;
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'checkout.html';
+        }
+
+        updateCartCount();
+    </script>
+</body>
+</html>
