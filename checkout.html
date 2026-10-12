@@ -48,6 +48,21 @@
         .payment-details .btn-pay { display: inline-block; padding: 14px 30px; background: #1a3a5c; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; transition: 0.3s; margin-top: 10px; font-size: 15px; }
         .payment-details .btn-pay:hover { background: #c9a84c; color: #1a3a5c; }
 
+        /* Unavailable Notice Box */
+        .unavailable-box {
+            display: none;
+            background: #fff7ed;
+            border: 1px solid #fdba74;
+            border-left: 4px solid #ea580c;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .unavailable-box.active { display: block; }
+        .unavailable-box h3 { color: #9a3412; margin-bottom: 12px; font-size: 19px; display: flex; align-items: center; gap: 8px; }
+        .unavailable-box p { color: #7c2d12; line-height: 1.7; font-size: 15px; margin-bottom: 8px; }
+        .unavailable-box strong { color: #9a3412; }
+
         .upload-section { margin-top: 25px; padding-top: 25px; border-top: 1px solid #e2e8f0; }
         .upload-section h3 { color: #1a3a5c; margin-bottom: 15px; font-size: 20px; }
         .upload-section label { display: block; color: #4a5568; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
@@ -123,20 +138,12 @@
                 </div>
             </div>
 
-            <!-- Bank Transfer Details -->
-            <div class="payment-details" id="details-bank">
-                <h3>🏦 Pay with Bank Transfer</h3>
-                <p>Send payment directly to our bank account. Here are the details:</p>
-                <div class="detail-box">
-                    <span class="label">Account Name:</span> Abdulafeez Aabdulfatahi<br>
-                    <span class="label">Bank Name:</span> Lead Bank<br>
-                    <span class="label">Account Number:</span> 213361465352<br>
-                    <span class="label">Account Type:</span> Checking<br>
-                    <span class="label">Routing Number:</span> 101019644<br>
-                    <span class="label">Bank Address:</span> 1801 Main St. Kansas City, MO 64108, USA
-                </div>
-                <p><strong>Step 1:</strong> Log into your bank and send the total amount to the account above.</p>
-                <p><strong>Step 2:</strong> Upload your payment confirmation below.</p>
+            <!-- Bank Transfer - UNAVAILABLE -->
+            <div class="unavailable-box" id="details-bank">
+                <h3>⚠️ Bank Transfer Currently Unavailable</h3>
+                <p>We're sorry — <strong>Bank Transfer is temporarily unavailable</strong> at this time.</p>
+                <p>Please select a different payment method such as <strong>Wise</strong>, <strong>Revolut</strong>, <strong>MoneyGram</strong>, or <strong>Western Union</strong> to complete your order.</p>
+                <p>We apologize for any inconvenience and appreciate your understanding.</p>
             </div>
 
             <!-- Wise Details -->
@@ -266,12 +273,26 @@
         function selectPayment(method) {
             selectedPayment = method;
 
+            // Clear existing selection
             document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
             document.querySelectorAll('.payment-details').forEach(el => el.classList.remove('active'));
+            document.getElementById('details-bank').classList.remove('active');
+            document.getElementById('uploadSection').style.display = 'none';
 
+            // Highlight the selected option
             document.querySelector(`.payment-option[onclick="selectPayment('${method}')"]`).classList.add('selected');
-            document.getElementById(`details-${method}`).classList.add('active');
-            document.getElementById('uploadSection').style.display = 'block';
+
+            if (method === 'bank') {
+                // Show the "unavailable" notice
+                document.getElementById('details-bank').classList.add('active');
+                // Hide upload section since payment can't proceed
+                document.getElementById('uploadSection').style.display = 'none';
+            } else {
+                // Show the payment details for the selected method
+                document.getElementById(`details-${method}`).classList.add('active');
+                // Show upload section for real methods
+                document.getElementById('uploadSection').style.display = 'block';
+            }
         }
 
         function submitPayment() {
