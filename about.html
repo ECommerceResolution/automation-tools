@@ -6,27 +6,38 @@
     <title>About - AI Automation</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a1a; color: #fff; }
-        nav { background: #12122a; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; }
-        nav .logo { font-size: 24px; font-weight: bold; color: #00d4ff; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fc; color: #1e2a3a; }
+
+        nav { background: #ffffff; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+        nav .logo { font-size: 24px; font-weight: bold; color: #1a3a5c; letter-spacing: -0.5px; }
         nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
-        nav ul li a { color: #ccc; text-decoration: none; transition: 0.3s; }
-        nav ul li a:hover { color: #00d4ff; }
+        nav ul li a { color: #4a5568; text-decoration: none; transition: 0.3s; font-weight: 500; }
+        nav ul li a:hover { color: #1a3a5c; }
         .cart-icon { position: relative; cursor: pointer; font-size: 22px; }
-        .cart-count { position: absolute; top: -10px; right: -12px; background: #7b2ff7; color: #fff; font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .header { text-align: center; padding: 80px 20px 40px; }
-        .header h1 { font-size: 48px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
-        .header p { color: #aaa; font-size: 18px; }
+        .cart-count { position: absolute; top: -10px; right: -12px; background: #1a3a5c; color: #fff; font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+        .header { text-align: center; padding: 80px 20px 40px; background: #ffffff; }
+        .header h1 { font-size: 44px; color: #1a3a5c; margin-bottom: 18px; letter-spacing: -1px; }
+        .header p { color: #64748b; font-size: 17px; }
+        .header .gold-line { width: 80px; height: 3px; background: #c9a84c; margin: 25px auto 0; }
+
         .content { max-width: 900px; margin: 0 auto; padding: 40px 50px 80px; }
-        .section { background: #12122a; padding: 40px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #222; }
-        .section h2 { color: #00d4ff; margin-bottom: 20px; font-size: 28px; }
-        .section h3 { color: #7b2ff7; margin: 20px 0 10px; font-size: 20px; }
-        .section p { color: #aaa; line-height: 1.8; margin-bottom: 15px; }
-        .section ul { color: #aaa; line-height: 1.8; margin-left: 20px; margin-bottom: 15px; }
-        footer { text-align: center; padding: 40px; background: #12122a; color: #666; }
+
+        .section { background: #ffffff; padding: 40px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #e2e8f0; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .section h2 { color: #1a3a5c; margin-bottom: 20px; font-size: 26px; letter-spacing: -0.5px; }
+        .section h3 { color: #c9a84c; margin: 22px 0 10px; font-size: 18px; font-weight: 700; }
+        .section p { color: #4a5568; line-height: 1.85; margin-bottom: 15px; font-size: 15px; }
+        .section ul { color: #4a5568; line-height: 1.9; margin-left: 22px; margin-bottom: 15px; font-size: 15px; }
+        .section ul li { margin-bottom: 6px; }
+
+        .contact-list li { list-style: none; padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #4a5568; margin-left: 0; }
+        .contact-list li strong { color: #1a3a5c; }
+
+        footer { text-align: center; padding: 40px; background: #0f2540; color: #94a3b8; font-size: 14px; }
+
         @media (max-width: 768px) {
             nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
-            .header h1 { font-size: 32px; }
+            .header h1 { font-size: 30px; }
             .content { padding: 20px; }
             .section { padding: 25px; }
         }
@@ -45,89 +56,77 @@
 
     <section class="header">
         <h1>About AI Automation</h1>
-        <p>Learn more about us and our policies</p>
+        <p>Learn more about our company and policies</p>
+        <div class="gold-line"></div>
     </section>
 
     <div class="content">
         <div class="section">
             <h2>Our Story</h2>
-            <p>AI Automation was founded with one mission: to help e-commerce store owners multiply their revenue through intelligent email automation. We believe every store — whether you're just starting or doing millions — deserves access to AI tools that were once only available to Fortune 500 companies.</p>
-            <p>Our team combines decades of experience in AI, email marketing, and e-commerce. We've helped over 2,800 stores across 47 countries increase their revenue with our tools.</p>
-            <p>We don't just sell software. We partner with you to grow your business. When your store makes more money, we succeed.</p>
+            <p>AI Automation was founded with a clear mission: to help e-commerce store owners build professional, revenue-focused email automation systems — without the high cost and slow turnaround of traditional agencies.</p>
+            <p>We believe every store, whether it's just starting out or already generating millions, deserves access to well-built automations that recover lost revenue, improve customer experience, and support long-term growth.</p>
+            <p>Our team combines experience in e-commerce operations, customer lifecycle marketing, and automation systems. Every automation package we offer is built around real buyer behavior — not guesswork.</p>
         </div>
 
         <div class="section">
             <h2>Privacy Policy</h2>
-            <p>Your privacy is our top priority. This policy explains exactly how we handle your information.</p>
-            
+            <p>Your privacy is important to us. This policy explains how we collect, use, and protect your information.</p>
+
             <h3>Information We Collect</h3>
             <ul>
-                <li>Your name and email address when you create an account</li>
+                <li>Your name and email address when you place an order</li>
                 <li>Payment information (processed securely through third-party providers — we never see your card details)</li>
-                <li>Usage data to improve our AI tools and your experience</li>
-                <li>Store information to personalize your experience</li>
+                <li>Order-related usage data to improve our services</li>
             </ul>
 
             <h3>How We Use Your Information</h3>
             <ul>
-                <li>To provide and maintain our AI email marketing services</li>
-                <li>To send you important updates about your account</li>
-                <li>To provide customer support</li>
-                <li>To improve our AI algorithms and tools</li>
-                <li>To send marketing emails (you can opt out anytime)</li>
+                <li>To deliver the automation packages you purchase</li>
+                <li>To provide customer support and onboarding guidance</li>
+                <li>To send important updates related to your order</li>
+                <li>To improve our services over time</li>
             </ul>
 
             <h3>Data Protection</h3>
-            <p>We use bank-level 256-bit encryption to protect your data. Our servers are SOC 2 Type II certified. We never sell, trade, rent, or share your personal information with third parties for marketing purposes.</p>
+            <p>We use industry-standard security measures to protect your personal information. We do not sell, rent, or share your data with third parties for marketing purposes.</p>
 
             <h3>Cookies</h3>
-            <p>We use cookies to enhance your experience. You can disable cookies in your browser settings, but some features may not work properly.</p>
-
-            <h3>Your Rights</h3>
-            <ul>
-                <li>Access your personal data anytime</li>
-                <li>Request deletion of your data</li>
-                <li>Opt out of marketing emails</li>
-                <li>Export your data in standard formats</li>
-            </ul>
+            <p>We use cookies to improve your browsing experience and to help our site function correctly. You can disable cookies in your browser settings if you prefer.</p>
         </div>
 
         <div class="section">
             <h2>Return & Refund Policy</h2>
-            <p>We stand behind our products 100%. Here's our promise to you.</p>
+            <p>We want you to be completely satisfied with any automation package you purchase.</p>
 
             <h3>30-Day Money Back Guarantee</h3>
-            <p>If you're not completely satisfied with any of our AI tools within 30 days of purchase, we'll refund your money — no questions asked. Just email us and we'll process your refund within 5-7 business days.</p>
+            <p>If you are not satisfied with your purchase within 30 days, we will refund your payment — no questions asked.</p>
 
             <h3>How to Request a Refund</h3>
             <ul>
                 <li>Email us at support@aiautomation.com</li>
-                <li>Include your order number and the email you used to purchase</li>
-                <li>Tell us briefly why you're requesting a refund (optional, but helps us improve)</li>
-                <li>We'll process your refund within 5-7 business days</li>
+                <li>Include your order number and the email address used at checkout</li>
+                <li>We will process your refund within 5–7 business days</li>
             </ul>
 
             <h3>Refund Exceptions</h3>
             <ul>
                 <li>Refunds are not available after 30 days from purchase</li>
-                <li>Custom development work is non-refundable once started</li>
-                <li>Subscription cancellations stop future billing but don't refund past payments</li>
-                <li>Refunds are processed to the original payment method</li>
+                <li>Custom or bespoke work is non-refundable once development begins</li>
+                <li>Refunds are issued to the original payment method</li>
             </ul>
 
-            <h3>Subscription Cancellations</h3>
-            <p>You can cancel your subscription anytime from your account dashboard. Your access continues until the end of your current billing period. No cancellation fees.</p>
+            <h3>Order Processing</h3>
+            <p>Once payment is verified, your automation package details and onboarding instructions are delivered to the email address you provide at checkout, typically within 24 hours.</p>
         </div>
 
         <div class="section">
             <h2>Contact Us</h2>
-            <p>Have questions? We'd love to hear from you. Our support team responds within 24 hours.</p>
-            <ul>
-                <li>📧 Email: support@aiautomation.com</li>
-                <li>💬 Live Chat: Available on our website 24/7</li>
-                <li>🌐 Website: www.aiautomation.com</li>
+            <p>Have a question? Our team is happy to help.</p>
+            <ul class="contact-list">
+                <li><strong>Email:</strong> support@aiautomation.com</li>
+                <li><strong>Business Hours:</strong> Monday – Friday, 9AM – 6PM EST</li>
+                <li><strong>Response Time:</strong> Within 24 hours</li>
             </ul>
-            <p style="margin-top:20px;color:#7b2ff7;"><strong>Business Hours:</strong> Monday - Friday, 9AM - 6PM EST</p>
         </div>
     </div>
 
