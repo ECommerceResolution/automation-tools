@@ -6,63 +6,85 @@
     <title>AI Automation - Smart Email Marketing Tools</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a1a; color: #fff; }
-        nav { background: #12122a; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; }
-        nav .logo { font-size: 24px; font-weight: bold; color: #00d4ff; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fc; color: #1e2a3a; }
+
+        /* NAV */
+        nav { background: #ffffff; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+        nav .logo { font-size: 24px; font-weight: bold; color: #1a3a5c; letter-spacing: -0.5px; }
         nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
-        nav ul li a { color: #ccc; text-decoration: none; transition: 0.3s; }
-        nav ul li a:hover { color: #00d4ff; }
+        nav ul li a { color: #4a5568; text-decoration: none; transition: 0.3s; font-weight: 500; }
+        nav ul li a:hover { color: #1a3a5c; }
         .cart-icon { position: relative; cursor: pointer; font-size: 22px; }
-        .cart-count { position: absolute; top: -10px; right: -12px; background: #7b2ff7; color: #fff; font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .hero { text-align: center; padding: 120px 20px; background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%); }
-        .hero h1 { font-size: 56px; margin-bottom: 20px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 20px; color: #aaa; max-width: 750px; margin: 0 auto 40px; line-height: 1.6; }
-        .btn { display: inline-block; padding: 18px 50px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; transition: 0.3s; border: none; cursor: pointer; }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 212, 255, 0.6); }
-        .features { padding: 80px 50px; }
-        .features h2 { text-align: center; font-size: 40px; margin-bottom: 60px; color: #00d4ff; }
+        .cart-count { position: absolute; top: -10px; right: -12px; background: #1a3a5c; color: #fff; font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+        /* HERO */
+        .hero { text-align: center; padding: 120px 20px; background: #ffffff; }
+        .hero h1 { font-size: 54px; color: #1a3a5c; margin-bottom: 20px; letter-spacing: -1.5px; line-height: 1.15; }
+        .hero p { font-size: 19px; color: #64748b; max-width: 750px; margin: 0 auto 40px; line-height: 1.7; }
+        .gold-line { width: 80px; height: 3px; background: #c9a84c; margin: 25px auto 0; }
+        .btn { display: inline-block; padding: 18px 50px; background: #1a3a5c; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 17px; transition: 0.3s; border: none; cursor: pointer; letter-spacing: 0.3px; }
+        .btn:hover { background: #c9a84c; color: #1a3a5c; }
+
+        /* FEATURES */
+        .features { padding: 90px 50px; background: #f8f9fc; }
+        .features h2 { text-align: center; font-size: 38px; margin-bottom: 20px; color: #1a3a5c; letter-spacing: -0.8px; }
+        .features .sub { text-align: center; color: #64748b; margin-bottom: 60px; font-size: 17px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .card { background: #12122a; padding: 40px; border-radius: 15px; border: 1px solid #222; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border-color: #00d4ff; box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2); }
-        .card h3 { color: #00d4ff; margin-bottom: 15px; font-size: 22px; }
-        .card p { color: #aaa; line-height: 1.6; }
-        .reviews { padding: 80px 20px; background: #0d0d20; overflow: hidden; }
-        .reviews h2 { text-align: center; font-size: 40px; margin-bottom: 60px; color: #00d4ff; }
-        .slider { display: flex; gap: 30px; animation: slide 40s linear infinite; width: max-content; }
+        .card { background: #ffffff; padding: 40px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .card:hover { transform: translateY(-6px); border-color: #c9a84c; box-shadow: 0 12px 40px rgba(26,58,92,0.12); }
+        .card h3 { color: #1a3a5c; margin-bottom: 15px; font-size: 21px; font-weight: 700; }
+        .card p { color: #64748b; line-height: 1.7; }
+
+        /* REVIEWS */
+        .reviews { padding: 90px 20px; background: #ffffff; overflow: hidden; }
+        .reviews h2 { text-align: center; font-size: 38px; margin-bottom: 20px; color: #1a3a5c; letter-spacing: -0.8px; }
+        .reviews .sub { text-align: center; color: #64748b; margin-bottom: 60px; font-size: 17px; }
+        .slider-wrapper { overflow: hidden; }
+        .slider { display: flex; gap: 30px; animation: slide 45s linear infinite; width: max-content; }
         .slider:hover { animation-play-state: paused; }
         @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .review-card { background: #12122a; padding: 35px; border-radius: 15px; border: 1px solid #222; width: 380px; flex-shrink: 0; }
-        .review-card .stars { color: #ffd700; margin-bottom: 15px; font-size: 18px; }
-        .review-card p { color: #ccc; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-        .review-card .author { color: #00d4ff; font-weight: bold; }
-        .review-card .role { color: #666; font-size: 14px; }
-        .cta { text-align: center; padding: 100px 20px; background: linear-gradient(135deg, #1a1a3a 0%, #0a0a1a 100%); }
-        .cta h2 { font-size: 40px; margin-bottom: 20px; }
-        .cta p { color: #aaa; margin-bottom: 40px; font-size: 18px; }
-        footer { text-align: center; padding: 40px; background: #12122a; color: #666; }
-        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
+        .review-card { background: #f8f9fc; padding: 35px; border-radius: 12px; border: 1px solid #e2e8f0; width: 400px; flex-shrink: 0; }
+        .review-card .stars { color: #c9a84c; margin-bottom: 15px; font-size: 18px; letter-spacing: 2px; }
+        .review-card p { color: #4a5568; line-height: 1.75; margin-bottom: 22px; font-style: italic; font-size: 15px; }
+        .review-card .author { color: #1a3a5c; font-weight: 700; font-size: 15px; }
+        .review-card .role { color: #94a3b8; font-size: 13px; margin-top: 3px; }
+
+        /* CTA */
+        .cta { text-align: center; padding: 100px 20px; background: #1a3a5c; }
+        .cta h2 { font-size: 38px; margin-bottom: 20px; color: #ffffff; letter-spacing: -0.8px; }
+        .cta p { color: #cbd5e0; margin-bottom: 40px; font-size: 17px; }
+        .cta .btn { background: #c9a84c; color: #1a3a5c; }
+        .cta .btn:hover { background: #ffffff; color: #1a3a5c; }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 40px; background: #0f2540; color: #94a3b8; font-size: 14px; }
+
+        /* CART MODAL */
+        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26,58,92,0.6); z-index: 1000; justify-content: center; align-items: center; }
         .cart-modal.active { display: flex; }
-        .cart-content { background: #12122a; padding: 40px; border-radius: 15px; max-width: 500px; width: 90%; border: 1px solid #00d4ff; }
-        .cart-content h3 { color: #00d4ff; margin-bottom: 20px; }
-        .cart-content .item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; }
-        .cart-content .item-name { color: #ccc; }
-        .cart-content .item-price { color: #00d4ff; font-weight: bold; }
-        .cart-content .total { display: flex; justify-content: space-between; padding: 20px 0; font-size: 20px; font-weight: bold; color: #fff; }
+        .cart-content { background: #ffffff; padding: 40px; border-radius: 12px; max-width: 500px; width: 90%; border-top: 4px solid #c9a84c; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .cart-content h3 { color: #1a3a5c; margin-bottom: 20px; font-size: 22px; }
+        .cart-content .item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e2e8f0; }
+        .cart-content .item-name { color: #4a5568; }
+        .cart-content .item-price { color: #1a3a5c; font-weight: 700; }
+        .cart-content .total { display: flex; justify-content: space-between; padding: 20px 0; font-size: 20px; font-weight: 800; color: #1a3a5c; border-top: 2px solid #1a3a5c; margin-top: 10px; }
         .cart-content .actions { display: flex; gap: 15px; margin-top: 20px; }
-        .cart-content .actions button { flex: 1; padding: 15px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
-        .btn-continue { background: #222; color: #fff; }
-        .btn-continue:hover { background: #333; }
-        .btn-checkout { background: linear-gradient(90deg, #00d4ff, #7b2ff7); color: #fff; }
-        .btn-checkout:hover { transform: scale(1.03); }
+        .cart-content .actions button { flex: 1; padding: 15px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; font-size: 15px; transition: 0.3s; }
+        .btn-continue { background: #e2e8f0; color: #4a5568; }
+        .btn-continue:hover { background: #cbd5e0; }
+        .btn-checkout { background: #1a3a5c; color: #fff; }
+        .btn-checkout:hover { background: #c9a84c; color: #1a3a5c; }
+
         @media (max-width: 768px) {
             nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
             nav ul { gap: 15px; }
-            .hero h1 { font-size: 36px; }
+            .hero h1 { font-size: 34px; }
             .hero p { font-size: 16px; }
             .features { padding: 50px 20px; }
-            .features h2 { font-size: 28px; }
-            .reviews h2 { font-size: 28px; }
+            .features h2 { font-size: 26px; }
+            .reviews h2 { font-size: 26px; }
             .review-card { width: 300px; }
+            .cta h2 { font-size: 26px; }
         }
     </style>
 </head>
@@ -78,87 +100,92 @@
     </nav>
 
     <section class="hero">
-        <h1>Shop AI Tools That Print Money</h1>
-        <p>While your competitors send boring manual emails that get ignored, our AI tools write, personalize, and send emails that actually convert — on autopilot, 24/7.</p>
+        <h1>Email Automation That Recovers Revenue and Builds Customer Loyalty</h1>
+        <p>Professionally built AI email automation systems for growing e-commerce stores. Recover abandoned carts, welcome new subscribers, win back inactive customers, and increase customer lifetime value — all on autopilot.</p>
         <a href="tools.html" class="btn">Shop AI Tools →</a>
+        <div class="gold-line"></div>
     </section>
 
     <section class="features">
-        <h2>Why AI Automation Wins</h2>
+        <h2>Why Store Owners Choose Our Automation</h2>
+        <p class="sub">Built for serious e-commerce brands that want measurable results.</p>
         <div class="grid">
             <div class="card">
-                <h3>⚡ 10x Faster</h3>
-                <p>What takes your team 40 hours, our AI does in 4 minutes. Send 10,000 personalized emails while you sleep.</p>
+                <h3>⚙️ Built by E-commerce Specialists</h3>
+                <p>Every automation is designed around proven e-commerce workflows — not generic templates. Each sequence is structured to match real buyer behavior at every stage of the customer journey.</p>
             </div>
             <div class="card">
-                <h3>🎯 Hyper-Personal</h3>
-                <p>AI reads each customer's behavior, past purchases, and browsing history to write emails that feel handcrafted just for them.</p>
+                <h3>📊 Revenue-Focused Systems</h3>
+                <p>Each automation is built with a clear commercial purpose: recover lost orders, increase average order value, or reactivate existing customers — so every email has a job to do.</p>
             </div>
             <div class="card">
-                <h3>📈 Higher Conversions</h3>
-                <p>Our clients see an average 340% increase in open rates and 180% increase in click-through rates within 30 days.</p>
+                <h3>🎯 Personalized at Scale</h3>
+                <p>Your customers receive messages based on their actual behavior, purchase history, and browsing activity — making every email feel relevant without any manual work.</p>
             </div>
             <div class="card">
-                <h3>🔄 Always Learning</h3>
-                <p>The AI learns from every campaign, getting smarter and more effective with every email you send.</p>
+                <h3>🔒 Privacy-First Approach</h3>
+                <p>Every automation is built to comply with modern data protection standards. Customer data is handled responsibly, and no personal information is ever shared with third parties.</p>
             </div>
             <div class="card">
-                <h3>💰 Save $10K/Month</h3>
-                <p>Replace expensive email marketing agencies and freelancers with AI that works 24/7 without breaks.</p>
+                <h3>💰 No Agency Retainers</h3>
+                <p>Replace expensive agency retainers and freelancer fees with automation systems that run 24/7 — without ongoing costs, delays, or dependency on a third party.</p>
             </div>
             <div class="card">
-                <h3>🚀 Scale Instantly</h3>
-                <p>Whether you have 100 or 1,000,000 subscribers, our AI handles it all without slowing down.</p>
+                <h3>📈 Scales With Your Store</h3>
+                <p>Whether you have 500 subscribers or 500,000, our automations handle the load effortlessly — so your email marketing grows with your business, not against it.</p>
             </div>
         </div>
     </section>
 
     <section class="reviews">
-        <h2>What Our Clients Say</h2>
-        <div class="slider" id="slider">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"I was skeptical at first, but the AI Email Personalizer doubled my open rates in the first week. My store went from $8K/month to $23K/month in 60 days."</p>
-                <div class="author">Sarah Mitchell</div>
-                <div class="role">Shopify Store Owner, USA</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"The Abandoned Cart AI recovered $14,000 in lost sales in the first month. It's like having a full-time sales team working for pennies."</p>
-                <div class="author">James Okafor</div>
-                <div class="role">E-commerce Manager, UK</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"I fired my email marketing agency and replaced them with these AI tools. Saved $4,500/month and my results are 3x better."</p>
-                <div class="author">Emily Chen</div>
-                <div class="role">DTC Brand Founder, Canada</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"The AI Subject Line Generator is pure magic. My emails went from 12% open rate to 47% open rate. Unbelievable."</p>
-                <div class="author">David Adeyemi</div>
-                <div class="role">Shopify Store Owner, Nigeria</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"I run 3 Shopify stores. These AI tools are the only reason I can manage all of them without hiring more staff."</p>
-                <div class="author">Maria Rodriguez</div>
-                <div class="role">Multi-Store Owner, Spain</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"The AI Segments my customers better than I ever could. My VIP customers get VIP emails and my revenue from repeat buyers is up 220%."</p>
-                <div class="author">Ahmed Hassan</div>
-                <div class="role">Store Owner, UAE</div>
+        <h2>What Store Owners Say</h2>
+        <p class="sub">Real results from real e-commerce businesses.</p>
+        <div class="slider-wrapper">
+            <div class="slider" id="slider">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The Abandoned Cart Automation paid for itself in the first week. It recovered orders I would have completely lost. The setup was clean, professional, and it just works."</p>
+                    <div class="author">Sarah Mitchell</div>
+                    <div class="role">Shopify Store Owner, USA</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"I've tried several email tools before, but this is the first one that actually felt built for e-commerce. The Welcome Series alone doubled my new-customer conversion rate."</p>
+                    <div class="author">James Okafor</div>
+                    <div class="role">E-commerce Manager, UK</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"I replaced my email marketing agency with these automation packages. My costs dropped by 70% and my revenue went up. The ROI speaks for itself."</p>
+                    <div class="author">Emily Chen</div>
+                    <div class="role">DTC Brand Founder, Canada</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The Predictive Replenishment Automation is a game changer for my consumable products. Customers reorder before they even realize they're running low."</p>
+                    <div class="author">David Adeyemi</div>
+                    <div class="role">Shopify Store Owner, Nigeria</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"I run three stores. These automations are the only reason I can manage email marketing across all of them without hiring a team. Everything runs on its own."</p>
+                    <div class="author">Maria Rodriguez</div>
+                    <div class="role">Multi-Store Owner, Spain</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The VIP Customer Loyalty Automation helped me give my best customers the attention they deserve. Repeat-purchase revenue from my top buyers has grown steadily."</p>
+                    <div class="author">Ahmed Hassan</div>
+                    <div class="role">Store Owner, UAE</div>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="cta">
-        <h2>Ready to Let AI Print Money for You?</h2>
-        <p>Join 2,847 store owners already using our AI tools.</p>
-        <a href="tools.html" class="btn">Shop AI Tools →</a>
+        <h2>Build a Smarter Email System for Your Store</h2>
+        <p>Explore ten professionally built automation packages designed for serious e-commerce growth.</p>
+        <a href="tools.html" class="btn">View All Automation Packages →</a>
     </section>
 
     <footer>
@@ -188,21 +215,21 @@
             const modal = document.getElementById('cartModal');
             const itemsDiv = document.getElementById('cartItems');
             const totalSpan = document.getElementById('cartTotal');
-            
+
             if (cart.length === 0) {
-                itemsDiv.innerHTML = '<p style="color:#aaa;padding:20px 0;">Your cart is empty.</p>';
+                itemsDiv.innerHTML = '<p style="color:#64748b;padding:20px 0;">Your cart is empty.</p>';
                 totalSpan.textContent = '$0';
             } else {
                 let html = '';
                 let total = 0;
-                cart.forEach((item, index) => {
+                cart.forEach((item) => {
                     html += `<div class="item"><span class="item-name">${item.name}</span><span class="item-price">$${item.price}</span></div>`;
                     total += item.price;
                 });
                 itemsDiv.innerHTML = html;
                 totalSpan.textContent = '$' + total;
             }
-            
+
             modal.classList.add('active');
         }
 
