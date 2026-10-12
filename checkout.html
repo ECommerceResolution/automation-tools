@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - AI Automation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a1a; color: #fff; }
+        nav { background: #12122a; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        nav .logo { font-size: 24px; font-weight: bold; color: #00d4ff; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        nav ul li a:hover { color: #00d4ff; }
+        .header { text-align: center; padding: 60px 20px 20px; }
+        .header h1 { font-size: 42px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
+        .header p { color: #aaa; font-size: 18px; }
+        .checkout { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+        .order-summary { background: #12122a; padding: 30px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; }
+        .order-summary h2 { color: #00d4ff; margin-bottom: 20px; }
+        .order-summary .item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #1a1a3a; }
+        .order-summary .item-name { color: #ccc; }
+        .order-summary .item-price { color: #00d4ff; font-weight: bold; }
+        .order-summary .total { display: flex; justify-content: space-between; padding: 20px 0 0; font-size: 24px; font-weight: bold; color: #fff; }
+        .payment-section { background: #12122a; padding: 30px; border-radius: 15px; border: 1px solid #222; }
+        .payment-section h2 { color: #00d4ff; margin-bottom: 10px; }
+        .payment-section > p { color: #aaa; margin-bottom: 25px; }
+        .payment-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .payment-option { background: #0d0d20; padding: 20px; border-radius: 10px; border: 2px solid #222; cursor: pointer; text-align: center; transition: 0.3s; }
+        .payment-option:hover { border-color: #00d4ff; }
+        .payment-option.selected { border-color: #7b2ff7; background: #1a1a3a; }
+        .payment-option .pay-icon { font-size: 32px; margin-bottom: 10px; }
+        .payment-option .pay-name { color: #fff; font-weight: bold; }
+        .payment-details { display: none; background: #0d0d20; padding: 25px; border-radius: 10px; border-left: 3px solid #7b2ff7; margin-bottom: 25px; }
+        .payment-details.active { display: block; }
+        .payment-details h3 { color: #7b2ff7; margin-bottom: 15px; }
+        .payment-details p { color: #ccc; line-height: 1.8; margin-bottom: 10px; }
+        .payment-details .detail-box { background: #12122a; padding: 20px; border-radius: 8px; margin: 15px 0; font-family: monospace; color: #00d4ff; line-height: 2; }
+        .payment-details .detail-box .label { color: #7b2ff7; font-weight: bold; }
+        .payment-details .btn-pay { display: inline-block; padding: 14px 30px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; margin-top: 10px; }
+        .payment-details .btn-pay:hover { transform: scale(1.03); }
+        .upload-section { margin-top: 25px; padding-top: 25px; border-top: 1px solid #222; }
+        .upload-section h3 { color: #00d4ff; margin-bottom: 15px; }
+        .upload-section label { display: block; color: #ccc; margin-bottom: 8px; font-size: 14px; }
+        .upload-section input, .upload-section textarea { width: 100%; padding: 12px; background: #0d0d20; border: 1px solid #222; border-radius: 8px; color: #fff; font-size: 14px; margin-bottom: 15px; }
+        .upload-section input:focus, .upload-section textarea:focus { outline: none; border-color: #00d4ff; }
+        .upload-section textarea { resize: vertical; min-height: 80px; }
+        .btn-submit { display: block; width: 100%; padding: 18px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); color: #fff; border: none; border-radius: 50px; font-weight: bold; font-size: 18px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-submit:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(0, 212, 255, 0.5); }
+        .success-msg { display: none; background: #0d2a1a; border: 1px solid #00d4ff; padding: 25px; border-radius: 10px; margin-top: 20px; text-align: center; }
+        .success-msg.active { display: block; }
+        .success-msg h3 { color: #00d4ff; margin-bottom: 10px; }
+        .success-msg p { color: #ccc; }
+        footer { text-align: center; padding: 40px; background: #12122a; color: #666; }
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .header h1 { font-size: 30px; }
+            .checkout { padding: 20px; }
+            .payment-options { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AI Automation</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="header">
+        <h1>Checkout</h1>
+        <p>Complete your payment to get instant access</p>
+    </section>
+
+    <section class="checkout">
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="orderItems"></div>
+            <div class="total"><span>Total:</span><span id="orderTotal">$0</span></div>
+        </div>
+
+        <div class="payment-section">
+            <h2>Choose Payment Method</h2>
+            <p>Select how you'd like to pay. Click on a method to see payment details.</p>
+
+            <div class="payment-options">
+                <div class="payment-option" onclick="selectPayment('bank')">
+                    <div class="pay-icon">🏦</div>
+                    <div class="pay-name">Bank Transfer</div>
+                </div>
+                <div class="payment-option" onclick="selectPayment('wise')">
+                    <div class="pay-icon">🌍</div>
+                    <div class="pay-name">Wise</div>
+                </div>
+                <div class="payment-option" onclick="selectPayment('revolut')">
+                    <div class="pay-icon">💳</div>
+                    <div class="pay-name">Revolut</div>
+                </div>
+                <div class="payment-option" onclick="selectPayment('moneygram')">
+                    <div class="pay-icon">💸</div>
+                    <div class="pay-name">MoneyGram</div>
+                </div>
+                <div class="payment-option" onclick="selectPayment('westernunion')">
+                    <div class="pay-icon">🏦</div>
+                    <div class="pay-name">Western Union</div>
+                </div>
+            </div>
+
+            <!-- Bank Transfer Details -->
+            <div class="payment-details" id="details-bank">
+                <h3>🏦 Pay with Bank Transfer</h3>
+                <p>Send payment directly to our bank account. Here are the details:</p>
+                <div class="detail-box">
+                    <span class="label">Account Name:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Bank Name:</span> Lead Bank<br>
+                    <span class="label">Account Number:</span> 213361465352<br>
+                    <span class="label">Account Type:</span> Checking<br>
+                    <span class="label">Routing Number:</span> 101019644<br>
+                    <span class="label">Bank Address:</span> 1801 Main St. Kansas City, MO 64108, USA
+                </div>
+                <p><strong>Step 1:</strong> Log into your bank and send the total amount to the account above.</p>
+                <p><strong>Step 2:</strong> Upload your payment confirmation below.</p>
+            </div>
+
+            <!-- Wise Details -->
+            <div class="payment-details" id="details-wise">
+                <h3>🌍 Pay with Wise</h3>
+                <p>Wise is the fastest and cheapest way to send money internationally. Here's how:</p>
+                <p><strong>Step 1:</strong> Go to <a href="https://wise.com" target="_blank" style="color:#00d4ff;">wise.com</a> and create a free account.</p>
+                <p><strong>Step 2:</strong> Send the total amount using these details:</p>
+                <div class="detail-box">
+                    <span class="label">Account Name:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Bank Name:</span> Lead Bank<br>
+                    <span class="label">Account Number:</span> 213361465352<br>
+                    <span class="label">Account Type:</span> Checking<br>
+                    <span class="label">Routing Number:</span> 101019644<br>
+                    <span class="label">Bank Address:</span> 1801 Main St. Kansas City, MO 64108, USA
+                </div>
+                <p><strong>Step 3:</strong> Upload your payment screenshot and transaction link below.</p>
+                <a href="https://wise.com" target="_blank" class="btn-pay">Go to Wise →</a>
+            </div>
+
+            <!-- Revolut Details -->
+            <div class="payment-details" id="details-revolut">
+                <h3>💳 Pay with Revolut</h3>
+                <p>Revolut is instant and secure. Here's how:</p>
+                <p><strong>Step 1:</strong> Go to <a href="https://revolut.com" target="_blank" style="color:#00d4ff;">revolut.com</a> and create an account.</p>
+                <p><strong>Step 2:</strong> Send the total amount using these details:</p>
+                <div class="detail-box">
+                    <span class="label">Account Name:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Bank Name:</span> Lead Bank<br>
+                    <span class="label">Account Number:</span> 213361465352<br>
+                    <span class="label">Account Type:</span> Checking<br>
+                    <span class="label">Routing Number:</span> 101019644<br>
+                    <span class="label">Bank Address:</span> 1801 Main St. Kansas City, MO 64108, USA
+                </div>
+                <p><strong>Step 3:</strong> Upload your payment screenshot below.</p>
+                <a href="https://revolut.com" target="_blank" class="btn-pay">Go to Revolut →</a>
+            </div>
+
+            <!-- MoneyGram Details -->
+            <div class="payment-details" id="details-moneygram">
+                <h3>💸 Pay with MoneyGram</h3>
+                <p>MoneyGram lets you send cash internationally. Here's how:</p>
+                <p><strong>Step 1:</strong> Go to <a href="https://moneygram.com" target="_blank" style="color:#00d4ff;">moneygram.com</a> or visit a local agent.</p>
+                <p><strong>Step 2:</strong> Send the total amount to:</p>
+                <div class="detail-box">
+                    <span class="label">Receiver:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Bank Name:</span> Lead Bank<br>
+                    <span class="label">Account Number:</span> 213361465352<br>
+                    <span class="label">Country:</span> USA<br>
+                    <span class="label">City:</span> Kansas City, MO
+                </div>
+                <p><strong>Step 3:</strong> Upload your receipt and reference number below.</p>
+                <a href="https://moneygram.com" target="_blank" class="btn-pay">Go to MoneyGram →</a>
+            </div>
+
+            <!-- Western Union Details -->
+            <div class="payment-details" id="details-westernunion">
+                <h3>🏦 Pay with Western Union</h3>
+                <p>Western Union is trusted worldwide. Here's how:</p>
+                <p><strong>Step 1:</strong> Go to <a href="https://westernunion.com" target="_blank" style="color:#00d4ff;">westernunion.com</a> or visit a local agent.</p>
+                <p><strong>Step 2:</strong> Send the total amount to:</p>
+                <div class="detail-box">
+                    <span class="label">Receiver:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Bank Name:</span> Lead Bank<br>
+                    <span class="label">Account Number:</span> 213361465352<br>
+                    <span class="label">Country:</span> USA<br>
+                    <span class="label">City:</span> Kansas City, MO<br>
+                    <span class="label">MTCN:</span> Will be provided after you initiate payment
+                </div>
+                <p><strong>Step 3:</strong> Upload your receipt and MTCN below.</p>
+                <a href="https://westernunion.com" target="_blank" class="btn-pay">Go to Western Union →</a>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="upload-section" id="uploadSection" style="display:none;">
+                <h3>Upload Payment Proof</h3>
+                <label>Transaction Link / Reference Number</label>
+                <input type="text" id="txnLink" placeholder="Paste the link or reference number here">
+
+                <label>Payment Screenshot</label>
+                <input type="file" id="paymentScreenshot" accept="image/*">
+
+                <label>Your Email Address</label>
+                <input type="email" id="customerEmail" placeholder="your@email.com">
+
+                <label>Additional Notes (Optional)</label>
+                <textarea id="notes" placeholder="Any additional information..."></textarea>
+
+                <button class="btn-submit" onclick="submitPayment()">Submit Payment Proof</button>
+            </div>
+
+            <div class="success-msg" id="successMsg">
+                <h3>✅ Payment Submitted!</h3>
+                <p>Thank you! We've received your payment proof. Our team will verify it within 24 hours and send your access details to your email.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AI Automation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let selectedPayment = null;
+
+        function renderOrder() {
+            const itemsDiv = document.getElementById('orderItems');
+            const totalSpan = document.getElementById('orderTotal');
+            
+            if (cart.length === 0) {
+                itemsDiv.innerHTML = '<p style="color:#aaa;padding:15px 0;">Your cart is empty.</p>';
+                totalSpan.textContent = '$0';
+                return;
+            }
+            
+            let html = '';
+            let total = 0;
+            cart.forEach(item => {
+                html += `<div class="item"><span class="item-name">${item.name}</span><span class="item-price">$${item.price}</span></div>`;
+                total += item.price;
+            });
+            itemsDiv.innerHTML = html;
+            totalSpan.textContent = '$' + total;
+        }
+
+        function selectPayment(method) {
+            selectedPayment = method;
+            
+            // Remove selected from all
+            document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
+            
+            // Hide all details
+            document.querySelectorAll('.payment-details').forEach(el => el.classList.remove('active'));
+            
+            // Show selected
+            document.querySelector(`.payment-option[onclick="selectPayment('${method}')"]`).classList.add('selected');
+            document.getElementById(`details-${method}`).classList.add('active');
+            document.getElementById('uploadSection').style.display = 'block';
+        }
+
+        function submitPayment() {
+            const link = document.getElementById('txnLink').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            
+            if (!link) {
+                alert('Please enter the transaction link or reference number.');
+                return;
+            }
+            
+            if (!email) {
+                alert('Please enter your email address.');
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // In a real setup, this would send data to a server
+            // For now, we show success message
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('successMsg').classList.add('active');
+            
+            // Clear cart
+            localStorage.removeItem('cart');
+        }
+
+        renderOrder();
+    </script>
+</body>
+</html>
