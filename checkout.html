@@ -64,11 +64,6 @@
         .btn-submit { display: block; width: 100%; padding: 18px; background: #1a3a5c; color: #fff; border: none; border-radius: 8px; font-weight: 700; font-size: 17px; cursor: pointer; transition: 0.3s; margin-top: 10px; letter-spacing: 0.3px; }
         .btn-submit:hover { background: #c9a84c; color: #1a3a5c; }
 
-        .success-msg { display: none; background: #f0fdf4; border: 1px solid #16a34a; padding: 25px; border-radius: 10px; margin-top: 20px; text-align: center; }
-        .success-msg.active { display: block; }
-        .success-msg h3 { color: #16a34a; margin-bottom: 10px; }
-        .success-msg p { color: #4a5568; }
-
         footer { text-align: center; padding: 40px; background: #0f2540; color: #94a3b8; font-size: 14px; }
 
         @media (max-width: 768px) {
@@ -294,7 +289,6 @@
                 return;
             }
 
-            // Save purchase info for the download page
             const purchaseInfo = {
                 items: cart,
                 email: email,
@@ -304,8 +298,7 @@
             };
             localStorage.setItem('purchaseInfo', JSON.stringify(purchaseInfo));
 
-            // Redirect to the download page
-            window.location.href = 'download.html';
+            window.location.href = 'confirmation.html';
         }
 
         renderOrder();
