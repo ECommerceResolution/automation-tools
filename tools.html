@@ -6,50 +6,102 @@
     <title>AI Email Marketing Tools</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a1a; color: #fff; }
-        nav { background: #12122a; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; }
-        nav .logo { font-size: 24px; font-weight: bold; color: #00d4ff; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fc; color: #1e2a3a; }
+
+        /* NAV */
+        nav { background: #ffffff; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+        nav .logo { font-size: 24px; font-weight: bold; color: #1a3a5c; letter-spacing: -0.5px; }
         nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
-        nav ul li a { color: #ccc; text-decoration: none; transition: 0.3s; }
-        nav ul li a:hover { color: #00d4ff; }
+        nav ul li a { color: #4a5568; text-decoration: none; transition: 0.3s; font-weight: 500; }
+        nav ul li a:hover { color: #1a3a5c; }
         .cart-icon { position: relative; cursor: pointer; font-size: 22px; }
-        .cart-count { position: absolute; top: -10px; right: -12px; background: #7b2ff7; color: #fff; font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .header { text-align: center; padding: 80px 20px 40px; }
-        .header h1 { font-size: 48px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
-        .header p { color: #aaa; font-size: 18px; max-width: 700px; margin: 0 auto; }
-        .tools { padding: 40px 50px 80px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto; }
-        .tool-card { background: #12122a; padding: 35px; border-radius: 15px; border: 1px solid #222; transition: 0.3s; display: flex; flex-direction: column; }
-        .tool-card:hover { border-color: #00d4ff; box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15); }
-        .tool-card .icon { font-size: 40px; margin-bottom: 15px; }
-        .tool-card h3 { color: #00d4ff; margin-bottom: 10px; font-size: 22px; }
-        .tool-card .price { color: #7b2ff7; font-size: 26px; font-weight: bold; margin-bottom: 15px; }
-        .tool-card .toggle-desc { color: #00d4ff; cursor: pointer; font-size: 14px; margin-bottom: 10px; user-select: none; }
-        .tool-card .toggle-desc:hover { text-decoration: underline; }
-        .tool-card .description { display: none; color: #bbb; line-height: 1.7; margin-bottom: 20px; padding: 20px; background: #0d0d20; border-radius: 10px; border-left: 3px solid #7b2ff7; }
+        .cart-count { position: absolute; top: -10px; right: -12px; background: #1a3a5c; color: #fff; font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+        /* HEADER */
+        .header { text-align: center; padding: 80px 20px 40px; background: #ffffff; }
+        .header h1 { font-size: 46px; color: #1a3a5c; margin-bottom: 18px; letter-spacing: -1px; }
+        .header p { color: #64748b; font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+        .header .gold-line { width: 80px; height: 3px; background: #c9a84c; margin: 25px auto 0; }
+
+        /* TOOLS */
+        .tools { padding: 60px 50px 80px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto; }
+
+        .tool-card {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .tool-card:hover {
+            border-color: #c9a84c;
+            box-shadow: 0 12px 40px rgba(26,58,92,0.12);
+            transform: translateY(-4px);
+        }
+        .tool-card .icon { font-size: 36px; margin-bottom: 18px; }
+        .tool-card h3 { color: #1a3a5c; margin-bottom: 12px; font-size: 21px; line-height: 1.3; font-weight: 700; }
+        .tool-card .price { color: #c9a84c; font-size: 28px; font-weight: 800; margin-bottom: 18px; letter-spacing: -0.5px; }
+        .tool-card .toggle-desc { color: #1a3a5c; cursor: pointer; font-size: 14px; margin-bottom: 12px; user-select: none; font-weight: 600; border-bottom: 1px dashed #c9a84c; display: inline-block; padding-bottom: 2px; }
+        .tool-card .toggle-desc:hover { color: #c9a84c; }
+        .tool-card .description {
+            display: none;
+            color: #4a5568;
+            line-height: 1.75;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fc;
+            border-radius: 8px;
+            border-left: 3px solid #1a3a5c;
+            font-size: 15px;
+        }
         .tool-card .description.active { display: block; }
-        .tool-card .description ul { margin-left: 20px; margin-top: 10px; }
-        .tool-card .description ul li { margin-bottom: 6px; }
-        .add-cart { display: inline-block; padding: 14px 30px; background: linear-gradient(90deg, #00d4ff, #7b2ff7); color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; font-size: 16px; margin-top: auto; }
-        .add-cart:hover { transform: scale(1.03); box-shadow: 0 0 25px rgba(0, 212, 255, 0.5); }
-        footer { text-align: center; padding: 40px; background: #12122a; color: #666; }
-        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
+        .tool-card .description strong { color: #1a3a5c; }
+        .tool-card .description .results-label { display: block; margin-top: 14px; color: #1a3a5c; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tool-card .description .results-text { color: #64748b; margin-top: 6px; display: block; }
+
+        .add-cart {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #1a3a5c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: auto;
+            letter-spacing: 0.3px;
+        }
+        .add-cart:hover { background: #c9a84c; color: #1a3a5c; }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 40px; background: #1a3a5c; color: #cbd5e0; font-size: 14px; }
+
+        /* CART MODAL */
+        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26,58,92,0.6); z-index: 1000; justify-content: center; align-items: center; }
         .cart-modal.active { display: flex; }
-        .cart-content { background: #12122a; padding: 40px; border-radius: 15px; max-width: 500px; width: 90%; border: 1px solid #00d4ff; }
-        .cart-content h3 { color: #00d4ff; margin-bottom: 20px; }
-        .cart-content .item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; }
-        .cart-content .item-name { color: #ccc; }
-        .cart-content .item-price { color: #00d4ff; font-weight: bold; }
-        .cart-content .total { display: flex; justify-content: space-between; padding: 20px 0; font-size: 20px; font-weight: bold; color: #fff; }
+        .cart-content { background: #ffffff; padding: 40px; border-radius: 12px; max-width: 500px; width: 90%; border-top: 4px solid #c9a84c; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .cart-content h3 { color: #1a3a5c; margin-bottom: 20px; font-size: 22px; }
+        .cart-content .item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e2e8f0; }
+        .cart-content .item-name { color: #4a5568; }
+        .cart-content .item-price { color: #1a3a5c; font-weight: 700; }
+        .cart-content .total { display: flex; justify-content: space-between; padding: 20px 0; font-size: 20px; font-weight: 800; color: #1a3a5c; border-top: 2px solid #1a3a5c; margin-top: 10px; }
         .cart-content .actions { display: flex; gap: 15px; margin-top: 20px; }
-        .cart-content .actions button { flex: 1; padding: 15px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
-        .btn-continue { background: #222; color: #fff; }
-        .btn-continue:hover { background: #333; }
-        .btn-checkout { background: linear-gradient(90deg, #00d4ff, #7b2ff7); color: #fff; }
-        .btn-checkout:hover { transform: scale(1.03); }
+        .cart-content .actions button { flex: 1; padding: 15px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; font-size: 15px; transition: 0.3s; }
+        .btn-continue { background: #e2e8f0; color: #4a5568; }
+        .btn-continue:hover { background: #cbd5e0; }
+        .btn-checkout { background: #1a3a5c; color: #fff; }
+        .btn-checkout:hover { background: #c9a84c; color: #1a3a5c; }
+
         @media (max-width: 768px) {
             nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
-            .header h1 { font-size: 32px; }
+            .header h1 { font-size: 30px; }
             .tools { padding: 20px; }
             .grid { grid-template-columns: 1fr; }
         }
@@ -67,8 +119,9 @@
     </nav>
 
     <section class="header">
-        <h1>AI Email Marketing Tools</h1>
-        <p>10 powerful AI tools that will transform your email marketing and multiply your revenue.</p>
+        <h1>AI Email Marketing Automation Packages</h1>
+        <p>Ten professionally built automation systems designed to recover revenue, increase customer lifetime value, and scale your store's communication — without adding manual work.</p>
+        <div class="gold-line"></div>
     </section>
 
     <section class="tools">
@@ -94,144 +147,84 @@
     <script>
         const tools = [
             {
-                icon: '📧',
-                name: 'AI Email Personalizer',
-                price: 49,
-                description: `<strong>What it does:</strong> Our AI reads every customer's browsing history, past purchases, and behavior — then writes a unique email for each person that feels handcrafted just for them.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal email marketing sends the same email to everyone. Our AI sends 10,000 unique emails in the time it takes you to write one.</li>
-                    <li>Personalized emails get 6x higher transaction rates.</li>
-                    <li>Our clients see an average 340% increase in open rates.</li>
-                    <li>Works while you sleep — sends at the perfect time for each customer's timezone.</li>
-                </ul>
-                <strong>Result:</strong> Turn cold subscribers into loyal buyers on autopilot.`
+                icon: '✉️',
+                name: 'AI-Powered Welcome Series Automation',
+                price: 175,
+                description: `<strong>What it does:</strong> Automatically welcomes every new subscriber through a personalized email sequence that introduces your brand, communicates your unique value, showcases best-selling products, and presents a compelling reason to make a first purchase.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Higher subscriber-to-customer conversion, stronger first impressions, and a more effective process for turning new leads into paying customers.</span>`
             },
             {
-                icon: '🎯',
-                name: 'AI Subject Line Generator',
-                price: 39,
-                description: `<strong>What it does:</strong> Our AI analyzes 50 million top-performing subject lines and writes the perfect one for your specific audience and product.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal subject lines get 12-15% open rates. Our AI-generated ones average 47%.</li>
-                    <li>AI tests 100 different subject lines per email and picks the winner automatically.</li>
-                    <li>Learns what your specific audience loves — gets smarter with every send.</li>
-                    <li>Emojis, urgency, curiosity — AI knows exactly what triggers your customers.</li>
-                </ul>
-                <strong>Result:</strong> Triple your open rates in the first week.`
+                icon: '🛒',
+                name: 'AI Abandoned Cart Recovery Automation',
+                price: 225,
+                description: `<strong>What it does:</strong> Detects eligible shoppers who leave products in their carts without completing a purchase and sends strategically timed reminders featuring their selected items, checkout links, and relevant purchase incentives when appropriate.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Recover otherwise-lost orders, reduce revenue leakage, and convert existing purchase intent into completed transactions without manually chasing every shopper.</span>`
+            },
+            {
+                icon: '👀',
+                name: 'AI Browse Abandonment Automation',
+                price: 150,
+                description: `<strong>What it does:</strong> Re-engages eligible subscribers who view products but leave without adding anything to their cart. It sends relevant product reminders, highlights key benefits, and directs shoppers back to the products that attracted their attention.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Convert more product-page interest into shopping activity, recover missed buying opportunities, and help move undecided visitors closer to a purchase.</span>`
+            },
+            {
+                icon: '📦',
+                name: 'AI Post-Purchase Engagement Automation',
+                price: 175,
+                description: `<strong>What it does:</strong> Automatically follows up after an order with personalized thank-you messages, product-use guidance, delivery-related information where supported, and carefully timed opportunities to explore complementary products.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Improve the customer experience after checkout, build confidence in the purchase, reduce avoidable support questions, and create more opportunities for repeat business.</span>`
             },
             {
                 icon: '🔄',
-                name: 'AI Abandoned Cart Recovery',
-                price: 79,
-                description: `<strong>What it does:</strong> When a customer abandons their cart, our AI instantly sends a personalized email sequence designed to bring them back.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal cart recovery gets 5% of abandoned carts back. Our AI recovers 38%.</li>
-                    <li>Sends 4 perfectly-timed emails: 1 hour, 24 hours, 3 days, 7 days.</li>
-                    <li>Each email has AI-generated urgency, social proof, and personalized discounts.</li>
-                    <li>Works 24/7 — even when you're asleep, the AI is making sales.</li>
-                </ul>
-                <strong>Result:</strong> The average store recovers $14,000/month in lost sales.`
+                name: 'AI Customer Win-Back Automation',
+                price: 200,
+                description: `<strong>What it does:</strong> Identifies eligible past customers who have not purchased within a defined period and sends targeted re-engagement emails featuring relevant products, new arrivals, customer benefits, or carefully selected offers.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Reactivate inactive customers, recover sales from an existing customer base, and reduce dependence on acquiring new buyers for every transaction.</span>`
             },
             {
-                icon: '👥',
-                name: 'AI Customer Segmentation',
-                price: 59,
-                description: `<strong>What it does:</strong> Our AI automatically groups your customers into 30+ smart segments based on behavior, value, and buying patterns.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal segmentation uses basic rules. Our AI finds patterns you'd never see.</li>
-                    <li>Identifies VIP customers, at-risk customers, and high-potential customers automatically.</li>
-                    <li>Sends the right message to the right person at the right time.</li>
-                    <li>Segmented campaigns get 760% more revenue.</li>
-                </ul>
-                <strong>Result:</strong> 220% increase in repeat buyer revenue.`
+                icon: '🎯',
+                name: 'AI Personalized Product Recommendation Automation',
+                price: 250,
+                description: `<strong>What it does:</strong> Uses available customer, browsing, and purchase data to recommend relevant products through automated emails. Depending on the available data, recommendations can include complementary items, related products, or popular alternatives.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Increase cross-selling opportunities, encourage additional purchases, improve product discovery, and potentially increase average order value without relying exclusively on discounts.</span>`
             },
             {
-                icon: '📝',
-                name: 'AI Email Copywriter',
-                price: 69,
-                description: `<strong>What it does:</strong> Our AI writes complete email campaigns — subject lines, body copy, CTAs, and even the PS line — in seconds.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal copywriting costs $500-2000 per email. Our AI does it for pennies.</li>
-                    <li>Trained on 1 billion top-converting emails from every industry.</li>
-                    <li>Writes in your brand voice — sounds exactly like you, just 100x faster.</li>
-                    <li>Never has writer's block, never misses deadlines, works 24/7.</li>
-                </ul>
-                <strong>Result:</strong> Fire your copywriter, save $3,000/month, get better results.`
+                icon: '⭐',
+                name: 'AI Customer Review and Feedback Automation',
+                price: 125,
+                description: `<strong>What it does:</strong> Sends review requests and customer feedback emails at appropriate intervals after a purchase, with direct links to the relevant product or feedback form. Timing can be adapted to the product's expected delivery and usage cycle.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Generate more opportunities to collect authentic customer reviews, identify customer experience problems, strengthen social proof, and provide useful insights for improving products and service.</span>`
             },
             {
-                icon: '⏰',
-                name: 'AI Send Time Optimizer',
-                price: 45,
-                description: `<strong>What it does:</strong> Our AI learns the exact minute each customer is most likely to open your email — then sends it at that perfect moment.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal email marketing sends to everyone at the same time. Our AI sends at each person's perfect time.</li>
-                    <li>Analyzes timezone, past open behavior, and daily routines.</li>
-                    <li>Increases open rates by 89% and click-through rates by 64%.</li>
-                    <li>Works automatically — no more guessing "when should I send this?"</li>
-                </ul>
-                <strong>Result:</strong> Nearly double your engagement with zero extra work.`
+                icon: '👑',
+                name: 'AI VIP Customer Loyalty Automation',
+                price: 200,
+                description: `<strong>What it does:</strong> Segments qualifying customers using available purchase frequency, spending, or loyalty data and sends tailored communications such as exclusive offers, early access, loyalty rewards, and personalized product announcements.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Strengthen relationships with high-value customers, encourage repeat purchases, and give the most valuable buyers stronger reasons to remain engaged with the brand.</span>`
             },
             {
-                icon: '🔮',
-                name: 'AI Predictive Analytics',
-                price: 89,
-                description: `<strong>What it does:</strong> Our AI predicts which customers will buy, when they'll buy, and what they'll buy — before they even know it themselves.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal email marketing is reactive. Our AI is predictive.</li>
-                    <li>Tells you which subscribers are about to buy so you can send the perfect email.</li>
-                    <li>Identifies customers about to churn so you can win them back.</li>
-                    <li>Forecasts your monthly revenue with 94% accuracy.</li>
-                </ul>
-                <strong>Result:</strong> Stay one step ahead of your customers and your competitors.`
+                icon: '🔁',
+                name: 'AI Predictive Replenishment Automation',
+                price: 225,
+                description: `<strong>What it does:</strong> Estimates when customers may need to replenish consumable or regularly used products using purchase history and appropriate product-specific intervals. It automatically sends reorder reminders and convenient links to repurchase.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Capture repeat orders before customers run out, shorten the path to repurchasing, and establish a more consistent stream of returning-customer revenue for suitable product categories.</span>`
             },
             {
-                icon: '🎨',
-                name: 'AI Email Designer',
-                price: 55,
-                description: `<strong>What it does:</strong> Our AI designs beautiful, mobile-responsive emails that match your brand perfectly — no designer needed.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal email design takes hours. Our AI takes seconds.</li>
-                    <li>Creates emails that look stunning on every device — phone, tablet, desktop.</li>
-                    <li>Uses proven design principles that maximize clicks and conversions.</li>
-                    <li>Automatically adapts your brand colors, fonts, and logo.</li>
-                </ul>
-                <strong>Result:</strong> Professional emails that convert — without hiring a designer.`
-            },
-            {
-                icon: '📊',
-                name: 'AI A/B Testing Suite',
-                price: 65,
-                description: `<strong>What it does:</strong> Our AI runs unlimited A/B tests on every part of your email — subject, content, CTA, images — and automatically picks the winner.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal A/B testing takes weeks per test. Our AI runs 100 tests simultaneously.</li>
-                    <li>Automatically implements winning variations without you lifting a finger.</li>
-                    <li>Learns from every test — gets smarter with every campaign.</li>
-                    <li>Continuous optimization means your emails get better every single day.</li>
-                </ul>
-                <strong>Result:</strong> Constantly improving results without any extra work.`
-            },
-            {
-                icon: '🛍️',
-                name: 'AI Product Recommendation Engine',
-                price: 99,
-                description: `<strong>What it does:</strong> Our AI analyzes each customer's purchase history and browsing behavior to recommend the exact products they're most likely to buy.<br><br>
-                <strong>Why it beats normal email marketing:</strong><br>
-                <ul>
-                    <li>Normal email marketing sends the same products to everyone. Our AI personalizes for each person.</li>
-                    <li>Amazon-style recommendations in your email campaigns.</li>
-                    <li>Increases average order value by 68%.</li>
-                    <li>Recommends complementary products, upsells, and cross-sells automatically.</li>
-                </ul>
-                <strong>Result:</strong> Turn every email into a personalized shopping experience.`
+                icon: '🧠',
+                name: 'AI Behavioral Segmentation and Smart Email Automation',
+                price: 250,
+                description: `<strong>What it does:</strong> Analyzes available customer interactions and purchase data to organize shoppers into useful behavioral segments, such as first-time buyers, repeat customers, high-value shoppers, and inactive subscribers. It then supports targeted email sequences based on each segment's needs and buying stage.
+                <span class="results-label">Intended Results</span>
+                <span class="results-text">Reduce irrelevant messaging, improve campaign relevance, allocate promotional offers more strategically, and create a more intelligent customer communication system that can scale with the store.</span>`
             }
         ];
 
@@ -243,7 +236,7 @@
                 <div class="tool-card">
                     <div class="icon">${tool.icon}</div>
                     <h3>${tool.name}</h3>
-                    <div class="price">$${tool.price}/month</div>
+                    <div class="price">$${tool.price}</div>
                     <div class="toggle-desc" onclick="toggleDesc(${index})">▼ See what this does for your store</div>
                     <div class="description" id="desc-${index}">${tool.description}</div>
                     <button class="add-cart" onclick="addToCart(${index})">Add to Cart</button>
@@ -274,21 +267,21 @@
             const modal = document.getElementById('cartModal');
             const itemsDiv = document.getElementById('cartItems');
             const totalSpan = document.getElementById('cartTotal');
-            
+
             if (cart.length === 0) {
-                itemsDiv.innerHTML = '<p style="color:#aaa;padding:20px 0;">Your cart is empty.</p>';
+                itemsDiv.innerHTML = '<p style="color:#64748b;padding:20px 0;">Your cart is empty.</p>';
                 totalSpan.textContent = '$0';
             } else {
                 let html = '';
                 let total = 0;
-                cart.forEach((item, index) => {
+                cart.forEach((item) => {
                     html += `<div class="item"><span class="item-name">${item.name}</span><span class="item-price">$${item.price}</span></div>`;
                     total += item.price;
                 });
                 itemsDiv.innerHTML = html;
                 totalSpan.textContent = '$' + total;
             }
-            
+
             modal.classList.add('active');
         }
 
