@@ -48,18 +48,9 @@
         .payment-details .btn-pay { display: inline-block; padding: 14px 30px; background: #1a3a5c; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; transition: 0.3s; margin-top: 10px; font-size: 15px; }
         .payment-details .btn-pay:hover { background: #c9a84c; color: #1a3a5c; }
 
-        /* Unavailable Notice Box */
-        .unavailable-box {
-            display: none;
-            background: #fff7ed;
-            border: 1px solid #fdba74;
-            border-left: 4px solid #ea580c;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-        }
+        .unavailable-box { display: none; background: #fff7ed; border: 1px solid #fdba74; border-left: 4px solid #ea580c; padding: 25px; border-radius: 10px; margin-bottom: 25px; }
         .unavailable-box.active { display: block; }
-        .unavailable-box h3 { color: #9a3412; margin-bottom: 12px; font-size: 19px; display: flex; align-items: center; gap: 8px; }
+        .unavailable-box h3 { color: #9a3412; margin-bottom: 12px; font-size: 19px; }
         .unavailable-box p { color: #7c2d12; line-height: 1.7; font-size: 15px; margin-bottom: 8px; }
         .unavailable-box strong { color: #9a3412; }
 
@@ -153,12 +144,12 @@
                 <p><strong>Step 1:</strong> Go to <a href="https://wise.com" target="_blank" style="color:#1a3a5c;font-weight:700;">wise.com</a> and create a free account.</p>
                 <p><strong>Step 2:</strong> Send the total amount using these details:</p>
                 <div class="detail-box">
-                    <span class="label">Account Name:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Account Name:</span> Abdulgafar Adeshina Adigun<br>
+                    <span class="label">Account Number:</span> 214954378731<br>
+                    <span class="label">ACH Routing:</span> 101019644<br>
+                    <span class="label">Account Type:</span> Individual Checking<br>
                     <span class="label">Bank Name:</span> Lead Bank<br>
-                    <span class="label">Account Number:</span> 213361465352<br>
-                    <span class="label">Account Type:</span> Checking<br>
-                    <span class="label">Routing Number:</span> 101019644<br>
-                    <span class="label">Bank Address:</span> 1801 Main St. Kansas City, MO 64108, USA
+                    <span class="label">Bank Address:</span> 1801 Main St., Kansas City, MO 64108
                 </div>
                 <p><strong>Step 3:</strong> Upload your payment screenshot and transaction link below.</p>
                 <a href="https://wise.com" target="_blank" class="btn-pay">Go to Wise →</a>
@@ -171,12 +162,12 @@
                 <p><strong>Step 1:</strong> Go to <a href="https://revolut.com" target="_blank" style="color:#1a3a5c;font-weight:700;">revolut.com</a> and create an account.</p>
                 <p><strong>Step 2:</strong> Send the total amount using these details:</p>
                 <div class="detail-box">
-                    <span class="label">Account Name:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Account Name:</span> Abdulgafar Adeshina Adigun<br>
+                    <span class="label">Account Number:</span> 214954378731<br>
+                    <span class="label">ACH Routing:</span> 101019644<br>
+                    <span class="label">Account Type:</span> Individual Checking<br>
                     <span class="label">Bank Name:</span> Lead Bank<br>
-                    <span class="label">Account Number:</span> 213361465352<br>
-                    <span class="label">Account Type:</span> Checking<br>
-                    <span class="label">Routing Number:</span> 101019644<br>
-                    <span class="label">Bank Address:</span> 1801 Main St. Kansas City, MO 64108, USA
+                    <span class="label">Bank Address:</span> 1801 Main St., Kansas City, MO 64108
                 </div>
                 <p><strong>Step 3:</strong> Upload your payment screenshot below.</p>
                 <a href="https://revolut.com" target="_blank" class="btn-pay">Go to Revolut →</a>
@@ -189,9 +180,9 @@
                 <p><strong>Step 1:</strong> Go to <a href="https://moneygram.com" target="_blank" style="color:#1a3a5c;font-weight:700;">moneygram.com</a> or visit a local agent.</p>
                 <p><strong>Step 2:</strong> Send the total amount to:</p>
                 <div class="detail-box">
-                    <span class="label">Receiver:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Receiver:</span> Abdulgafar Adeshina Adigun<br>
                     <span class="label">Bank Name:</span> Lead Bank<br>
-                    <span class="label">Account Number:</span> 213361465352<br>
+                    <span class="label">Account Number:</span> 214954378731<br>
                     <span class="label">Country:</span> USA<br>
                     <span class="label">City:</span> Kansas City, MO
                 </div>
@@ -206,9 +197,9 @@
                 <p><strong>Step 1:</strong> Go to <a href="https://westernunion.com" target="_blank" style="color:#1a3a5c;font-weight:700;">westernunion.com</a> or visit a local agent.</p>
                 <p><strong>Step 2:</strong> Send the total amount to:</p>
                 <div class="detail-box">
-                    <span class="label">Receiver:</span> Abdulafeez Aabdulfatahi<br>
+                    <span class="label">Receiver:</span> Abdulgafar Adeshina Adigun<br>
                     <span class="label">Bank Name:</span> Lead Bank<br>
-                    <span class="label">Account Number:</span> 213361465352<br>
+                    <span class="label">Account Number:</span> 214954378731<br>
                     <span class="label">Country:</span> USA<br>
                     <span class="label">City:</span> Kansas City, MO<br>
                     <span class="label">MTCN:</span> Will be provided after you initiate payment
@@ -233,11 +224,6 @@
                 <textarea id="notes" placeholder="Any additional information..."></textarea>
 
                 <button class="btn-submit" onclick="submitPayment()">Submit Payment Proof</button>
-            </div>
-
-            <div class="success-msg" id="successMsg">
-                <h3>✅ Payment Submitted Successfully</h3>
-                <p>Thank you. We've received your payment proof and will verify it within 24 hours. Your access details will be sent to your email address.</p>
             </div>
         </div>
     </section>
@@ -273,24 +259,18 @@
         function selectPayment(method) {
             selectedPayment = method;
 
-            // Clear existing selection
             document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
             document.querySelectorAll('.payment-details').forEach(el => el.classList.remove('active'));
             document.getElementById('details-bank').classList.remove('active');
             document.getElementById('uploadSection').style.display = 'none';
 
-            // Highlight the selected option
             document.querySelector(`.payment-option[onclick="selectPayment('${method}')"]`).classList.add('selected');
 
             if (method === 'bank') {
-                // Show the "unavailable" notice
                 document.getElementById('details-bank').classList.add('active');
-                // Hide upload section since payment can't proceed
                 document.getElementById('uploadSection').style.display = 'none';
             } else {
-                // Show the payment details for the selected method
                 document.getElementById(`details-${method}`).classList.add('active');
-                // Show upload section for real methods
                 document.getElementById('uploadSection').style.display = 'block';
             }
         }
@@ -314,10 +294,18 @@
                 return;
             }
 
-            document.getElementById('uploadSection').style.display = 'none';
-            document.getElementById('successMsg').classList.add('active');
+            // Save purchase info for the download page
+            const purchaseInfo = {
+                items: cart,
+                email: email,
+                transactionLink: link,
+                paymentMethod: selectedPayment,
+                submittedAt: new Date().toISOString()
+            };
+            localStorage.setItem('purchaseInfo', JSON.stringify(purchaseInfo));
 
-            localStorage.removeItem('cart');
+            // Redirect to the download page
+            window.location.href = 'download.html';
         }
 
         renderOrder();
